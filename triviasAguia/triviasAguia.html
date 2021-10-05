@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>TAPIT SSO APP - CLUB COLOMBIA</title>
+  <title>TAPIT SSO APP - AGUILA TRIVIAS</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
 </head>
 
@@ -25,14 +25,8 @@
         <h2 class="sso-font-bold">EL OBJETO</h2>
         <p id="current-user"></p>
         <br>
-        <h2 class="sso-font-bold">EL TOKEN en .ya</h2>
-        <p id="current-user1"></p>
-        <br>
         <h2 class="sso-font-bold">EL TOKEN en .Aa</h2>
         <p id="current-user2"></p>
-        <br>
-        <h2 class="sso-font-bold">EL TOKEN en ._lat</h2>
-        <p id="current-user3"></p>
         <br>
         <h2 class="sso-font-bold">LA DATA DE LA COLECCIÓN</h2>
         <p id="current-user4"></p>
@@ -48,7 +42,7 @@
   </section>
 
   <script src="https://sso.qa.tapit.com.co/v3/tapit.sso.main.js"></script>
-  <script src="club.sso.config.js"></script>
+  <script src="triviasAguia.sso.config.js"></script>
   <script>
     function configTapitSso() {
       ssoApp.auth.onAuthStateChanged(function (userCredential) {
@@ -69,9 +63,8 @@
               console.log(error);
             });
           document.getElementById('current-user').innerText = JSON.stringify(userCredential);
-          document.getElementById('current-user1').innerText = userCredential.ya;
+          console.log('userCredential', userCredential);
           document.getElementById('current-user2').innerText = userCredential.Aa;
-          document.getElementById('current-user3').innerText = userCredential._lat;
           document.getElementById('logout-button').classList.remove('sso-hidden');
         } else {
           document.getElementById('current-user').innerText = '';
@@ -79,10 +72,11 @@
         }
       });
 
-      ssoApp.configApp(CLUB_SSO_CONFIG);
+      ssoApp.configApp(AGUILA_TRIVIAS_SSO_CONFIG);
 
       ssoApp.onFlowCompleted().subscribe(res => {
-        console.log("Campaign2 after sso completed event")
+        console.log("Campaign2 after sso completed event");
+        console.log('res', res);
       });
     }
 
